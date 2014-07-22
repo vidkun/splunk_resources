@@ -1,0 +1,30 @@
+Nexpose Add-on
+----------------------------------------
+	Author: Ryan LeViseur (vidkun)
+	Author: Neena Bhutiani
+	Version/Date: 1.0/07-22-2014
+	Has index-time operations: false
+	Has search-time operations: true, this TA must be deployed to search heads
+	Supported product(s):
+		 * Rapid7 Nexpose Enterprise
+
+
+Using this Add-on:
+----------------------------------------
+	Configuration: Manual
+	Ports for automatic configuration: None
+	Requirements: 
+		* Nexpose Security Console: Ruby >= 1.9.3
+		* Nexpose Security Console: Nexpose gem >= 0.8.0
+	Scripted input setup: 
+		* Edit TA-nexpose/local/inputs.conf to set the desired interval
+		* Edit TA-nexpose/bin/nexpose2splunk.rb to set hard coded credentials
+		  for a Nexpose user account with credentials to run the reports
+		  and edit the site_list variable for your desired sites
+		* Install Universal Forwarder on Nexpose Security Console
+		* Push TA-nexpose to Nexpose Security Console
+		* Copy/Push TA-nexpose to search heads and manually change
+		  TA-nexpose/local/inputs.conf to disable the scripted input
+
+
+Copyright (C) 2014 Ryan LeViseur.
