@@ -51,29 +51,6 @@ end
 	#Strip first row of CSV (headers)
 	csv_output.delete(0)
 	csv_output.each do |r|
-	if r[:skill_mv].to_s.include?(",")
-	  skill_split = r[:skill_mv].split(',').join(', ')
-	else
-	  skill_split = r[:skill_mv]
-	end
-
-	if r[:category_mv].to_s.include?(",")
-	  category_split = r[:category_mv].split(',').join(', ')
-	else
-	  category_split = r[:category_mv]
-	end
-
-	if r[:cve_mv].to_s.include?(",")
-	  cve_split = r[:cve_mv].split(',').join(', ')
-	else 
-	  cve_split = r[:cve_mv]
-	end
-
-	if r[:bugtraq_mv].to_s.include?(",")
-	  bugs_split = r[:bugtraq_mv].split(',').join(', ')
-	else
-	  bugs_split = r[:bugtraq_mv]
-	end
 
 	# CVE, Bugtraq, Skill and Category all need to come in as *_mv for transforms to properly breakout the multiple values and display with correct name in Splunk	
 	splunk_event = "#{NOW} start_time=\"#{r[:start_time]}\" end_time=\"#{r[:end_time]}\" dest_ip=\"#{r[:dest_ip]}\" dest_nt_host=\"#{r[:dest_nt_host]}\" dest_mac=\"#{r[:dest_mac]}\" os=\"#{r[:os]}\" signature_id=\"#{r[:signature_id]}\" signature=\"#{r[:signature]}\" severity=\"#{r[:severity]}\" exploits=\"#{r[:exploits]}\" malware_kits=\"#{r[:malware_kits]}\" skill_mv=\"#{skill_mv}\" cvss_score=\"#{r[:cvss_score]}\" cvss_vector=\"#{r[:cvss_vector]}\" category_mv=\"#{category_mv}\" cve_mv=\"#{cve_mv}\" bugtraq_mv=\"#{bugtraq_mv}\"\n"
